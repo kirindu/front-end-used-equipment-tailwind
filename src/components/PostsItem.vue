@@ -4,12 +4,13 @@
 import {ref, computed} from "vue";
 
 
-//Props
+//Props 
 const props = defineProps({
   post: {
     type: Object
   }
 })
+
 
 //Reactividad
 const urlImage = ref('');
@@ -19,6 +20,16 @@ const selectImage = computed(() => {
   urlImage.value = props.post.images[0].image_url;
   return urlImage.value;
 });
+
+const formattedPrice = computed(() => {
+  return formatCurrency(props.post.price);
+});
+
+
+//Metodos
+const formatCurrency = (value) => {
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
+};
 
 
 </script>
@@ -30,9 +41,7 @@ const selectImage = computed(() => {
                   <div class="p-6">
                     <img class="w-full rounded-sm" :src="selectImage" alt="Image Description">
                     <div class="box-body px-0 pb-0">
-                      <a href="javascript:void(0);" class="text-sm leading-[0] text-danger font-semibold">Technology</a>
-                      <h5 class="font-semibold mb-0 text-lg leading-none">Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit.</h5>
+                      <h5 class="font-semibold mb-0 text-lg leading-none">{{formattedPrice}}</h5>
                       <p class="mt-3 mb-3 text-gray-500 dark:text-white/70 text-sm">
                         {{ props.post.description }}
                       </p>
