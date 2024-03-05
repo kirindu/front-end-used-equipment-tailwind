@@ -3,6 +3,15 @@
 //Importaciones de sistemas y librerias
 import {ref, computed} from "vue";
 
+//Importaciones de Composables
+import useFormatCurrency from "@/composables/useFormatCurrency.js";
+import useFormatDate from "@/composables/useFormatDate.js";
+import useFormatNumber from "@/composables/useFormatNumber.js";
+
+//Leemos propiedades de los Composables
+const {formattingCurrency} = useFormatCurrency();
+const {formattingDate} = useFormatDate();
+const {formattingNumber} = useFormatNumber();
 
 //Props 
 const props = defineProps({
@@ -14,6 +23,7 @@ const props = defineProps({
 
 //Reactividad
 const urlImage = ref('');
+const totalPic = ref(0);
 
 // Computed
 const selectImage = computed(() => {
@@ -21,27 +31,26 @@ const selectImage = computed(() => {
   return urlImage.value;
 });
 
-const formattedPrice = computed(() => {
-  return formatCurrency(props.post.price);
-});
 
 
 //Metodos
-const formatCurrency = (value) => {
-  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
-};
-
 
 </script>
 
 <template>
 
-              <div class="col-span-12 xxxl:col-span-4">
+<!--                <div class="col-span-12 md:col-span-6 xxl:col-span-3">-->
+  <div class="col-span-12 md:col-span-6 xxl:col-span-2">
                 <div class="box">
                   <div class="p-6">
                     <img class="w-full rounded-sm" :src="selectImage" alt="Image Description">
                     <div class="box-body px-0 pb-0">
-                      <h5 class="font-semibold mb-0 text-lg leading-none">{{formattedPrice}}</h5>
+
+                      <h5 class="font-semibold mb-0 text-lg text-orange-500 leading-none">{{props.post.name}}</h5>
+
+                      <br/>
+                      <h5 class="font-semibold mb-0 text-lg leading-none">{{`Price:  ${formattingCurrency(props.post.price)}`}}</h5>
+
                       <p class="mt-3 mb-3 text-gray-500 dark:text-white/70 text-sm">
                         {{ props.post.description }}
                       </p>
@@ -51,30 +60,26 @@ const formatCurrency = (value) => {
                     </div>
                   </div>
                   <div class="box-footer bg-transparent">
+
                     <div class="sm:flex items-center justify-between space-y-2 sm:space-y-0 xxxl:flex xxxl:space-y-0">
                       <div class="flex items-center space-x-3 rtl:space-x-reverse">
-                        <div class="flex">
-                          <img class="avatar avatar-sm ring-0 rounded-full" src="../assets/img/users/1.jpg"
-                            alt="avatar">
+                        <div class="flex -space-x-2 rtl:space-x-reverse">
+                          <img v-for="post in props.post.images" :key="post._id" class="avatar avatar-sm ring-0 rounded-full" :src="post.image_url" alt="avatar">
                         </div>
                         <div>
-                          <p class="text-slate-700 font-semibold text-sm dark:text-white">
-                            {{ props.post.name }}
+                          <p class="text-slate-700 font-semibold text-sm text-purple-400">
+                            {{`Total Pics: ${props.post.images.length}`}}
                           </p>
-                          <p class="text-xs text-gray-500 dark:text-white/70">
-                            {{ props.post.price }}
-                          </p>
+
                         </div>
                       </div>
                       <div class="">
-                        <a href="javascript:void(0);"
-                          class="text-xs leading-[0] text-gray-500 dark:text-white/70 space-x-2 rtl:space-x-reverse rounded-full bg-gray-100 px-3 py-1 font-normal hover:bg-gray-300 focus:bg-gary-800 dark:bg-black/20 dark:hover:bg-bgdark inline-flex"><i
-                            class="text-xs ri ri-heart-line"></i><span class="my-2">30</span></a>
-                        <a href="javascript:void(0);"
-                          class="text-xs leading-[0] text-gray-500 dark:text-white/70 space-x-2 rtl:space-x-reverse rounded-full bg-gray-100 px-3 py-1 font-normal hover:bg-gray-300 focus:bg-gary-800 dark:bg-black/20 dark:hover:bg-bgdark inline-flex"><i
-                            class="text-xs ri ri-thumb-up-line"></i><span class="my-2">25k</span></a>
+                       <span class="my-2">Publication Date: {{formattingDate(props.post.creationDate,'MM/DD/YYYY')}}</span>
+
                       </div>
                     </div>
+
+
                   </div>
                 </div>
               </div>

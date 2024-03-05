@@ -1,7 +1,7 @@
 <script setup>
 
 //Importaciones de sistemas y librerias
-import {ref, computed, watch, onMounted, defineEmits} from "vue";
+import {ref, computed, watch, onMounted} from "vue";
 
 // Importamos Stores
 import {usePostsStore} from "@/stores/posts.js";

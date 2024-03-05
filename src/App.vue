@@ -25,7 +25,6 @@ const gestionarPostsRecibidos = (data) => {
  // console.log(postRecividos.value);
 };
 
-
 </script>
 
 <template>
@@ -34,16 +33,12 @@ const gestionarPostsRecibidos = (data) => {
   <div class="content mt-1" >
     <div class="main-content">
 
-      
-
       <AppPageHeader />
 
       <Spinner v-if="storeCategory.loading" />
  
             <!-- Start::row-1 -->
             <div class="grid grid-cols-12 gap-x-5">
-
-
 
               <CategoriesItem
               v-if="!storeCategory.loading"
@@ -54,7 +49,7 @@ const gestionarPostsRecibidos = (data) => {
               />
         </div>
 
-        <div class="grid grid-cols-12 gap-x-6">
+        <div class="grid grid-cols-12 gap-x-5">
 
         <PostsItem
         v-for="post in postRecividos"
