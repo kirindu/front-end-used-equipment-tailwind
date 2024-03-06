@@ -1,11 +1,7 @@
 import api from "@/lib/axios.js";
 
 export default {
-
-    all() {
-        return api.get('/posts/');
-
-    }
-
-
-}
+  all() {
+    return api.get("/posts/");
+  },
+};
