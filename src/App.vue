@@ -50,15 +50,14 @@ const gestionarPostsRecibidos = (data) => {
         </div>
 
         <div class="grid grid-cols-12 gap-x-5">
-
         <PostsItem
         v-for="post in postRecividos"
                 :key="post._id"
-                :post="post"
-        
+                :post="post"    
         />
-
         </div>
+
+        
        
     </div>
 

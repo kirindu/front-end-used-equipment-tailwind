@@ -1,7 +1,20 @@
 <script setup>
-import { defineProps, defineEmits, ref } from "vue";
+
+// Importaciones de sistemas y librerias
+import { defineProps, ref, computed } from "vue";
 import {onClickOutside} from '@vueuse/core';
 
+
+//Importaciones de Composables
+import useFormatCurrency from "@/composables/useFormatCurrency.js";
+import useFormatDate from "@/composables/useFormatDate.js";
+import { usePostsStore } from '@/stores/posts.js';
+
+//Leemos propiedades de los Composables
+const {formattingCurrency} = useFormatCurrency();
+const {formattingDate} = useFormatDate();
+
+// Props
 const props = defineProps({
   isOpen: Boolean,
   post: {
@@ -9,11 +22,27 @@ const props = defineProps({
   },
 });
 
+// Reactividad
+const urlImage = ref('');
+const indexSelected = ref(0);
+const target = ref(null);
 
+// Emits
 const emit = defineEmits(["modal-close"]);
 
-const target = ref(null)
-onClickOutside(target, ()=>emit('modal-close'))
+// Metodos
+onClickOutside(target, ()=>emit('modal-close'));
+
+const SelectIndex = (index) => {
+  indexSelected.value = index;
+}
+
+// Computed
+const selectImage = computed(() => {
+  urlImage.value = props.post.images[indexSelected.value].image_url;
+  return urlImage.value;
+});
+
 
 </script>
 
@@ -38,36 +67,225 @@ onClickOutside(target, ()=>emit('modal-close'))
 
 
                         <div class="p-6">
-                    <img class="w-full rounded-sm" src="https://backend-nodeserverusedequipment.onrender.com/api/posts/image/ee84dea1-fd70-4c75-a9d8-e5c46b1dab25.jpg" alt="Image Description">
+                    <img class="w-full rounded-sm" :src="selectImage" alt="Image Description">
                   
                   </div>
 
 
+                  <div class="flex justify-center items-center space-x-3 rtl:space-x-reverse">
+                        <div class="flex -space-x-2 rtl:space-x-reverse">
+                          <img 
+                          v-on:click="SelectIndex(index) 
+                          " v-for="(post, index) in props.post.images" 
+                          :key="post._id" 
+                          class="avatar avatar-sm ring-0 rounded-full cursor-pointer" 
+                          :src="post.image_url" 
+                          alt="avatar"
+                          style="height: 4rem; width: 4rem;">
+                        </div>
+                        <div>
+                          <p class="text-slate-700 font-semibold text-sm text-purple-400">
+                            {{`(${props.post.images.length} Pics)`}}
+                          </p>
 
+                        </div>
+                      </div>
 
+                      <br/>
+               
 
                         <div class="space-y-4">
                           <div>
-                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Be bold</h3>
-                            <p class="mt-1 text-gray-800 dark:text-white/70">
-                              Motivate teams to do their best work. Offer best practices to get users going in the right direction. Be bold and offer just enough help to get the work started, and then get out of the way. Give accurate information so users can make educated decisions. Know your user's struggles and desired outcomes and give just enough information to let them get where they need to go.
-                            </p>
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white"><span class="font-semibold mb-0 text-lg text-orange-500 leading-none">Price:</span> {{`${formattingCurrency(props.post.price)}`}}</h3>
+         
+                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white"><span class="font-semibold mb-0 text-lg text-orange-500 leading-none">Description:</span> {{`${props.post.description}`}}</h3>
+
                           </div>
 
-                          <div>
-                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Be optimistic</h3>
-                            <p class="mt-1 text-gray-800 dark:text-white/70">
-                              Focusing on the details gives people confidence in our products. Weave a consistent story across our fabric and be diligent about vocabulary across all messaging by being brand conscious across products to create a seamless flow across all the things. Let people know that they can jump in and start working expecting to find a dependable experience across all the things. Keep teams in the loop about what is happening by informing them of relevant features, products and opportunities for success. Be on the journey with them and highlight the key points that will help them the most - right now. Be in the moment by focusing attention on the important bits first.
-                            </p>
-                          </div>
-
-                          <div>
-                            <h3 class="text-lg font-semibold text-gray-800 dark:text-white">Be practical, with a wink</h3>
-                            <p class="mt-1 text-gray-800 dark:text-white/70">
-                              Keep our own story short and give teams just enough to get moving. Get to the point and be direct. Be concise - we tell the story of how we can help, but we do it directly and with purpose. Be on the lookout for opportunities and be quick to offer a helping hand. At the same time realize that novbody likes a nosy neighbor. Give the user just enough to know that something awesome is around the corner and then get out of the way. Write clear, accurate, and concise text that makes interusers more usable and consistent - and builds trust. We strive to write text that is understandable by anyone, anywhere, regardless of their culture or language so that everyone feels they are part of the team.
-                            </p>
-                          </div>
                         </div>
+
+
+        <div v-if="props.post.category.name !='Cans'" class="grid grid-cols-6 gap-2 mt-4">
+
+          <div class="col-span-12 xxxl:col-span-3 md:col-span-3">
+            <div class="box overflow-hidden">
+              <div class="box-body">
+                <div class="flex items-start">
+                  <div class="ltr:mr-3 rtl:ml-3">
+                    <span class="avatar rounded-full bg-primary text-white p-3"><i class='ti ti-calendar-stats text-2xl leading-none'></i></span>
+                  </div>
+                  <div class="flex-1 sm:flex justify-between items-center mx-3">
+                    <div class="flex-1">
+                      <p class="mb-1 text-gray-500 dark:text-white/70 text-sm">Year: </p>
+                      <h5 class="text-xl text-gray-800 dark:text-white font-semibold">{{props.post.year}}</h5>
+                    </div>
+                    <div id="totalInvested" class="min-w-fit"></div>
+                  </div>
+                </div>
+              </div>
+            </div>   
+          </div>
+          <div class="col-span-12 xxxl:col-span-3 md:col-span-3">
+            <div class="box overflow-hidden">
+              <div class="box-body">
+                <div class="flex items-start">
+                  <div class="ltr:mr-3 rtl:ml-3">
+                    <span class="avatar rounded-full bg-primary text-white p-3"><i class='ti ti-brand-bandcamp text-2xl leading-none'></i></span>
+                  </div>
+                  <div class="flex-1 sm:flex justify-between items-center mx-3">
+                    <div class="flex-1">
+                      <p class="mb-1 text-gray-500 dark:text-white/70 text-sm">Make: </p>
+                      <h5 class="text-xl text-gray-800 dark:text-white font-semibold">{{props.post.make}}</h5>
+                    </div>
+                    <div id="totalInvested" class="min-w-fit"></div>
+                  </div>
+                </div>
+              </div>
+            </div>   
+          </div>
+
+          <div class="col-span-12 xxxl:col-span-3 md:col-span-3">
+            <div class="box overflow-hidden">
+              <div class="box-body">
+                <div class="flex items-start">
+                  <div class="ltr:mr-3 rtl:ml-3">
+                    <span class="avatar rounded-full bg-primary text-white p-3"><i class='ti ti-box-model text-2xl leading-none'></i></span>
+                  </div>
+                  <div class="flex-1 sm:flex justify-between items-center mx-3">
+                    <div class="flex-1">
+                      <p class="mb-1 text-gray-500 dark:text-white/70 text-sm">Model: </p>
+                      <h5 class="text-xl text-gray-800 dark:text-white font-semibold">{{props.post.model}}</h5>
+                    </div>
+                    <div id="totalInvested" class="min-w-fit"></div>
+                  </div>
+                </div>
+              </div>
+            </div>   
+          </div>
+
+          <div class="col-span-12 xxxl:col-span-3 md:col-span-3">
+            <div class="box overflow-hidden">
+              <div class="box-body">
+                <div class="flex items-start">
+                  <div class="ltr:mr-3 rtl:ml-3">
+                    <span class="avatar rounded-full bg-primary text-white p-3"><i class='ti ti-engine text-2xl leading-none'></i></span>
+                  </div>
+                  <div class="flex-1 sm:flex justify-between items-center mx-3">
+                    <div class="flex-1">
+                      <p class="mb-1 text-gray-500 dark:text-white/70 text-sm">Engine: </p>
+                      <h5 class="text-xl text-gray-800 dark:text-white font-semibold">{{props.post.engine}}</h5>
+                    </div>
+                    <div id="totalInvested" class="min-w-fit"></div>
+                  </div>
+                </div>
+              </div>
+            </div>   
+          </div>
+
+          <div class="col-span-12 xxxl:col-span-3 md:col-span-3">
+            <div class="box overflow-hidden">
+              <div class="box-body">
+                <div class="flex items-start">
+                  <div class="ltr:mr-3 rtl:ml-3">
+                    <span class="avatar rounded-full bg-primary text-white p-3"><i class='ti ti-manual-gearbox text-2xl leading-none'></i></span>
+                  </div>
+                  <div class="flex-1 sm:flex justify-between items-center mx-3">
+                    <div class="flex-1">
+                      <p class="mb-1 text-gray-500 dark:text-white/70 text-sm">Transmission: </p>
+                      <h5 class="text-xl text-gray-800 dark:text-white font-semibold">{{props.post.transmission}}</h5>
+                    </div>
+                    <div id="totalInvested" class="min-w-fit"></div>
+                  </div>
+                </div>
+              </div>
+            </div>   
+          </div>
+
+          <div class="col-span-12 xxxl:col-span-3 md:col-span-3">
+            <div class="box overflow-hidden">
+              <div class="box-body">
+                <div class="flex items-start">
+                  <div class="ltr:mr-3 rtl:ml-3">
+                    <span class="avatar rounded-full bg-primary text-white p-3"><i class='ti ti-vector-bezier-2 text-2xl leading-none'></i></span>
+                  </div>
+                  <div class="flex-1 sm:flex justify-between items-center mx-3">
+                    <div class="flex-1">
+                      <p class="mb-1 text-gray-500 dark:text-white/70 text-sm">Suspension: </p>
+                      <h5 class="text-xl text-gray-800 dark:text-white font-semibold">{{props.post.suspension}}</h5>
+                    </div>
+                    <div id="totalInvested" class="min-w-fit"></div>
+                  </div>
+                </div>
+              </div>
+            </div>   
+          </div>
+
+          <div class="col-span-12 xxxl:col-span-3 md:col-span-3">
+            <div class="box overflow-hidden">
+              <div class="box-body">
+                <div class="flex items-start">
+                  <div class="ltr:mr-3 rtl:ml-3">
+                    <span class="avatar rounded-full bg-primary text-white p-3"><i class='ti ti-gas-station text-2xl leading-none'></i></span>
+                  </div>
+                  <div class="flex-1 sm:flex justify-between items-center mx-3">
+                    <div class="flex-1">
+                      <p class="mb-1 text-gray-500 dark:text-white/70 text-sm">Fuel: </p>
+                      <h5 class="text-xl text-gray-800 dark:text-white font-semibold">{{props.post.fuel}}</h5>
+                    </div>
+                    <div id="totalInvested" class="min-w-fit"></div>
+                  </div>
+                </div>
+              </div>
+            </div>   
+          </div>
+          <div class="col-span-12 xxxl:col-span-3 md:col-span-3">
+            <div class="box overflow-hidden">
+              <div class="box-body">
+                <div class="flex items-start">
+                  <div class="ltr:mr-3 rtl:ml-3">
+                    <span class="avatar rounded-full bg-primary text-white p-3"><i class='ti ti-number text-2xl leading-none'></i></span>
+                  </div>
+                  <div class="flex-1 sm:flex justify-between items-center mx-3">
+                    <div class="flex-1">
+                      <p class="mb-1 text-gray-500 dark:text-white/70 text-sm">VIN#: </p>
+                      <h5 class="text-xl text-gray-800 dark:text-white font-semibold">{{props.post.vin}}</h5>
+                    </div>
+                    <div id="totalInvested" class="min-w-fit"></div>
+                  </div>
+                </div>
+              </div>
+            </div>   
+          </div>        <div class="col-span-12 xxxl:col-span-3 md:col-span-3">
+            <div class="box overflow-hidden">
+              <div class="box-body">
+                <div class="flex items-start">
+                  <div class="ltr:mr-3 rtl:ml-3">
+                    <span class="avatar rounded-full bg-primary text-white p-3"><i class='ti ti-dimensions text-2xl leading-none'></i></span>
+                  </div>
+                  <div class="flex-1 sm:flex justify-between items-center mx-3">
+                    <div class="flex-1">
+                      <p class="mb-1 text-gray-500 dark:text-white/70 text-sm">Body Size: </p>
+                      <h5 class="text-xl text-gray-800 dark:text-white font-semibold">{{props.post.bodySize}}</h5>
+                    </div>
+                    <div id="totalInvested" class="min-w-fit"></div>
+                  </div>
+                </div>
+              </div>
+            </div>   
+          </div>
+        
+         
+
+     
+       
+
+        </div>
+
+
+
+
+
+                        
                       </div>
                       <div class="ti-modal-footer">
 
@@ -86,6 +304,7 @@ onClickOutside(target, ()=>emit('modal-close'))
                         </button>  -->
 
                       </div>
+                      
                     </div>
                   </div>
                   

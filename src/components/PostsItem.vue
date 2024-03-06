@@ -4,18 +4,15 @@
 import {ref, computed} from "vue";
 
 //Importaciones de componentes
-import PostModal from "./PostModal.vue";
 import PostModal2 from "./PostModal2.vue";
 
 //Importaciones de Composables
 import useFormatCurrency from "@/composables/useFormatCurrency.js";
 import useFormatDate from "@/composables/useFormatDate.js";
-import useFormatNumber from "@/composables/useFormatNumber.js";
 
 //Leemos propiedades de los Composables
 const {formattingCurrency} = useFormatCurrency();
 const {formattingDate} = useFormatDate();
-const {formattingNumber} = useFormatNumber();
 
 //Props 
 const props = defineProps({
@@ -25,7 +22,7 @@ const props = defineProps({
 })
 
 
-//Reactividad
+// Reactividad
 const urlImage = ref('');
 const indexSelected = ref(0);
 const isModalOpened = ref(false);
@@ -49,11 +46,11 @@ const closeModal = () => {
   isModalOpened.value = false;
 };
 
-const submitHandler = ()=>{
+// const submitHandler = ()=>{
 
- console.log('thi is a test');
-  //here you do whatever
-}
+//  console.log('thi is a test');
+//   //here you do whatever
+// }
 
 </script>
 
@@ -83,7 +80,13 @@ const submitHandler = ()=>{
                     <div class="sm:flex items-center justify-between space-y-2 sm:space-y-0 xxxl:flex xxxl:space-y-0">
                       <div class="flex items-center space-x-3 rtl:space-x-reverse">
                         <div class="flex -space-x-2 rtl:space-x-reverse">
-                          <img v-on:click="SelectIndex(index) " v-for="(post, index) in props.post.images" :key="post._id" class="avatar avatar-sm ring-0 rounded-full cursor-pointer" :src="post.image_url" alt="avatar">
+                          <img 
+                          v-on:click="SelectIndex(index) 
+                          " v-for="(post, index) in props.post.images" 
+                          :key="post._id" 
+                          class="avatar avatar-sm ring-0 rounded-full cursor-pointer" 
+                          :src="post.image_url" 
+                          alt="avatar">
                         </div>
                         <div>
                           <p class="text-slate-700 font-semibold text-sm text-purple-400">
@@ -105,9 +108,11 @@ const submitHandler = ()=>{
 <PostModal2
 :isOpen="isModalOpened"
 @modal-close="closeModal"
-name="first-modal">
-<template #header>Custom header</template>
+:post="post"
+>
+<template #header>{{props.post.name}}</template>
 </PostModal2>
+
 
           
               
