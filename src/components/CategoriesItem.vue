@@ -21,12 +21,8 @@ const props = defineProps({
 });
 
 // Watches
-watch(
-  () => storePost.posts,
-  (newVal, oldVal) => {
-    count.value = storePost.posts.filter(
-      (e) => e.category.name === props.category.name
-    ).length; // Otra forma
+watch(() => storePost.posts, (newVal, oldVal) => {
+    count.value = storePost.posts.filter((e) => e.category.name === props.category.name).length; // Otra forma
   }
 );
 
