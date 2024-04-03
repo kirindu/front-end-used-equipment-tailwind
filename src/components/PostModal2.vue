@@ -284,10 +284,23 @@ const selectImage = computed(() => {
          
             
           </div>
+
+          
           <h4 class="text-lg  text-gray-800 dark:text-white">
                 <span class="font-semibold mb-0 text-xl text-orange-500 leading-none">Description:</span>
                 {{ `${props.post.description}` }}
               </h4>
+
+              <br>
+              <hr>
+<br>
+              <h4 class="text-lg  text-gray-800 dark:text-white">
+                <span class="font-semibold mb-0 text-xl text-blue-500 leading-none">Contact:</span>
+               <p>Sam Nelson</p>
+               <p>801-836-5658</p>
+               <p>sam@caasutah.com</p>
+              </h4>
+
         </div>
         <div class="ti-modal-footer">
           <button

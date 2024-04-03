@@ -5,7 +5,7 @@
 
 
 <div class="flex justify-center items-center">
-    <img src="/src/assets/img/logo-company/ace-logo.ico" style="height: 5rem;" alt="alternate text">
+    <img src="/src/assets/img/logo-company/ace-logo.ico" style="height: 12rem;" alt="alternate text">
 </div>
 
         <!-- Page Header -->
