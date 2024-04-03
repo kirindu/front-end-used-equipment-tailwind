@@ -80,11 +80,14 @@ const selectImage = computed(() => {
         </div>
         <div class="ti-modal-body">
           <div class="p-6">
+
+
             <img
               class="w-full rounded-sm"
               :src="selectImage"
               alt="Image Description"
             />
+
           </div>
 
           <div
