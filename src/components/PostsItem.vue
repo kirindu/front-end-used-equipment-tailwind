@@ -1,4 +1,4 @@
-<script setup>
+ <script setup>
 //Importaciones de sistemas y librerias
 import { ref, computed } from "vue";
 
@@ -61,16 +61,14 @@ const closeModal = () => {
           alt="Image Description"
         />
         <div class="box-body px-0 pb-0">
-          <h5 class="font-semibold mb-0 text-lg text-orange-500 leading-none">
-            {{ props.post.name }}
-          </h5>
+     
 
-          <br />
-          <h5 class="font-semibold mb-0 text-lg leading-none">
-            {{ `Price:  ${formattingCurrency(props.post.price)}` }}
-          </h5>
+          <div class="flex-1">
+                        <p class="mb-1 text-orange-500 text-lg font-semibold">Price: <span class="text-base text-gray-800 dark:text-white">{{ ` ${formattingCurrency(props.post.price)}` }}</span></p>
+                   
+                      </div>
 
-          <p class="mt-3 mb-3 text-gray-500 dark:text-white/70 text-sm">
+          <p class="mt-3 mb-3 text-base text-gray-500 dark:text-white/70 text-sm">
             {{ props.post.description }}
           </p>
           <button

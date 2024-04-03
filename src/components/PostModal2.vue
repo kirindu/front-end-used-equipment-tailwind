@@ -113,20 +113,13 @@ const selectImage = computed(() => {
           <div class="space-y-4">
             <div>
               <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
-                <span
-                  class="font-semibold mb-0 text-lg text-orange-500 leading-none"
-                  >Price:</span
-                >
+                <span class="font-semibold mb-0 text-xl text-orange-500 leading-none">Price:</span>
+         
+
                 {{ `${formattingCurrency(props.post.price)}` }}
               </h3>
 
-              <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
-                <span
-                  class="font-semibold mb-0 text-lg text-orange-500 leading-none"
-                  >Description:</span
-                >
-                {{ `${props.post.description}` }}
-              </h3>
+        
             </div>
           </div>
 
@@ -150,16 +143,10 @@ const selectImage = computed(() => {
                       class="flex-1 sm:flex justify-between items-center mx-3"
                     >
                       <div class="flex-1">
-                        <p
-                          class="mb-1 text-gray-500 dark:text-white/70 text-sm"
-                        >
-                          Year:
-                        </p>
-                        <h5
-                          class="text-xl text-gray-800 dark:text-white font-semibold"
-                        >
+                        <p class="mb-1 text-orange-500 text-xl font-semibold">Year:</p>
+                        <h6 class="text-lg text-gray-800 dark:text-white">
                           {{ props.post.year }}
-                        </h5>
+                        </h6>
                       </div>
                       <div id="totalInvested" class="min-w-fit"></div>
                     </div>
@@ -179,20 +166,12 @@ const selectImage = computed(() => {
                         ></i
                       ></span>
                     </div>
-                    <div
-                      class="flex-1 sm:flex justify-between items-center mx-3"
-                    >
+                    <div class="flex-1 sm:flex justify-between items-center mx-3" >
                       <div class="flex-1">
-                        <p
-                          class="mb-1 text-gray-500 dark:text-white/70 text-sm"
-                        >
-                          Make:
-                        </p>
-                        <h5
-                          class="text-xl text-gray-800 dark:text-white font-semibold"
-                        >
-                          {{ props.post.make }}
-                        </h5>
+                        <p class="mb-1 text-orange-500 text-xl font-semibold">Manufacturer:</p>
+                        <h6 class="text-lg text-gray-800 dark:text-white">
+                          {{ props.post.manufacturer }}
+                        </h6>
                       </div>
                       <div id="totalInvested" class="min-w-fit"></div>
                     </div>
@@ -211,20 +190,13 @@ const selectImage = computed(() => {
                         ><i class="ti ti-box-model text-2xl leading-none"></i
                       ></span>
                     </div>
-                    <div
-                      class="flex-1 sm:flex justify-between items-center mx-3"
-                    >
+                    <div class="flex-1 sm:flex justify-between items-center mx-3">
+
                       <div class="flex-1">
-                        <p
-                          class="mb-1 text-gray-500 dark:text-white/70 text-sm"
-                        >
-                          Model:
-                        </p>
-                        <h5
-                          class="text-xl text-gray-800 dark:text-white font-semibold"
-                        >
-                          {{ props.post.model }}
-                        </h5>
+                        <p class="mb-1 text-orange-500 text-xl font-semibold">Body:</p>
+                        <h6 class="text-lg text-gray-800 dark:text-white">
+                         {{ props.post.body }}
+                        </h6>
                       </div>
                       <div id="totalInvested" class="min-w-fit"></div>
                     </div>
@@ -243,20 +215,12 @@ const selectImage = computed(() => {
                         ><i class="ti ti-engine text-2xl leading-none"></i
                       ></span>
                     </div>
-                    <div
-                      class="flex-1 sm:flex justify-between items-center mx-3"
-                    >
+                    <div class="flex-1 sm:flex justify-between items-center mx-3" >
                       <div class="flex-1">
-                        <p
-                          class="mb-1 text-gray-500 dark:text-white/70 text-sm"
-                        >
-                          Engine:
-                        </p>
-                        <h5
-                          class="text-xl text-gray-800 dark:text-white font-semibold"
-                        >
+                        <p class="mb-1 text-orange-500 text-xl font-semibold">Engine:</p>
+                        <h6 class="text-lg text-gray-800 dark:text-white">
                           {{ props.post.engine }}
-                        </h5>
+                        </h6>
                       </div>
                       <div id="totalInvested" class="min-w-fit"></div>
                     </div>
@@ -277,20 +241,12 @@ const selectImage = computed(() => {
                         ></i
                       ></span>
                     </div>
-                    <div
-                      class="flex-1 sm:flex justify-between items-center mx-3"
-                    >
+                    <div class="flex-1 sm:flex justify-between items-center mx-3">
                       <div class="flex-1">
-                        <p
-                          class="mb-1 text-gray-500 dark:text-white/70 text-sm"
-                        >
-                          Transmission:
-                        </p>
-                        <h5
-                          class="text-xl text-gray-800 dark:text-white font-semibold"
-                        >
-                          {{ props.post.transmission }}
-                        </h5>
+                        <p class="mb-1 text-orange-500 text-xl font-semibold">Power Train:</p>
+                        <h6 class="text-lg text-gray-800 dark:text-white">
+                          {{ props.post.powerTrain }}
+                        </h6>
                       </div>
                       <div id="totalInvested" class="min-w-fit"></div>
                     </div>
@@ -311,20 +267,12 @@ const selectImage = computed(() => {
                         ></i
                       ></span>
                     </div>
-                    <div
-                      class="flex-1 sm:flex justify-between items-center mx-3"
-                    >
+                    <div class="flex-1 sm:flex justify-between items-center mx-3">
                       <div class="flex-1">
-                        <p
-                          class="mb-1 text-gray-500 dark:text-white/70 text-sm"
-                        >
-                          Suspension:
-                        </p>
-                        <h5
-                          class="text-xl text-gray-800 dark:text-white font-semibold"
-                        >
-                          {{ props.post.suspension }}
-                        </h5>
+                        <p class="mb-1 text-orange-500 text-xl font-semibold">Chassis:</p>
+                        <h6 class="text-lg text-gray-800 dark:text-white">
+                          {{ props.post.chassis }}
+                        </h6>
                       </div>
                       <div id="totalInvested" class="min-w-fit"></div>
                     </div>
@@ -333,100 +281,13 @@ const selectImage = computed(() => {
               </div>
             </div>
 
-            <div class="col-span-12 xxxl:col-span-3 md:col-span-3">
-              <div class="box overflow-hidden">
-                <div class="box-body">
-                  <div class="flex items-start">
-                    <div class="ltr:mr-3 rtl:ml-3">
-                      <span
-                        class="avatar rounded-full bg-primary text-white p-3"
-                        ><i class="ti ti-gas-station text-2xl leading-none"></i
-                      ></span>
-                    </div>
-                    <div
-                      class="flex-1 sm:flex justify-between items-center mx-3"
-                    >
-                      <div class="flex-1">
-                        <p
-                          class="mb-1 text-gray-500 dark:text-white/70 text-sm"
-                        >
-                          Fuel:
-                        </p>
-                        <h5
-                          class="text-xl text-gray-800 dark:text-white font-semibold"
-                        >
-                          {{ props.post.fuel }}
-                        </h5>
-                      </div>
-                      <div id="totalInvested" class="min-w-fit"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-span-12 xxxl:col-span-3 md:col-span-3">
-              <div class="box overflow-hidden">
-                <div class="box-body">
-                  <div class="flex items-start">
-                    <div class="ltr:mr-3 rtl:ml-3">
-                      <span
-                        class="avatar rounded-full bg-primary text-white p-3"
-                        ><i class="ti ti-number text-2xl leading-none"></i
-                      ></span>
-                    </div>
-                    <div
-                      class="flex-1 sm:flex justify-between items-center mx-3"
-                    >
-                      <div class="flex-1">
-                        <p
-                          class="mb-1 text-gray-500 dark:text-white/70 text-sm"
-                        >
-                          VIN#:
-                        </p>
-                        <h5
-                          class="text-xl text-gray-800 dark:text-white font-semibold"
-                        >
-                          {{ props.post.vin }}
-                        </h5>
-                      </div>
-                      <div id="totalInvested" class="min-w-fit"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-span-12 xxxl:col-span-3 md:col-span-3">
-              <div class="box overflow-hidden">
-                <div class="box-body">
-                  <div class="flex items-start">
-                    <div class="ltr:mr-3 rtl:ml-3">
-                      <span
-                        class="avatar rounded-full bg-primary text-white p-3"
-                        ><i class="ti ti-dimensions text-2xl leading-none"></i
-                      ></span>
-                    </div>
-                    <div
-                      class="flex-1 sm:flex justify-between items-center mx-3"
-                    >
-                      <div class="flex-1">
-                        <p
-                          class="mb-1 text-gray-500 dark:text-white/70 text-sm"
-                        >
-                          Body Size:
-                        </p>
-                        <h5
-                          class="text-xl text-gray-800 dark:text-white font-semibold"
-                        >
-                          {{ props.post.bodySize }}
-                        </h5>
-                      </div>
-                      <div id="totalInvested" class="min-w-fit"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+         
+            
           </div>
+          <h4 class="text-lg  text-gray-800 dark:text-white">
+                <span class="font-semibold mb-0 text-xl text-orange-500 leading-none">Description:</span>
+                {{ `${props.post.description}` }}
+              </h4>
         </div>
         <div class="ti-modal-footer">
           <button
