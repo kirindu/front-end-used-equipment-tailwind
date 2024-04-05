@@ -71,7 +71,7 @@ const closeModal = () => {
           <p class="mt-3 mb-3 text-base text-gray-500 dark:text-white/70 text-sm">
             {{ props.post.description }}
           </p>
-          <button
+          <button style="background-color: #e41a01 !important;"
             @click="openModal"
             type="button"
             class="hs-dropdown-toggle ti-btn ti-border font-medium bg-white text-gray-700 shadow-sm align-middle hover:bg-gray-50 focus:ring-offset-white focus:ring-primary dark:bg-bgdark dark:hover:bg-black/20 dark:border-white/10 dark:text-white/70 dark:hover:text-white dark:focus:ring-offset-white/10"
@@ -97,7 +97,7 @@ const closeModal = () => {
               />
             </div>
             <div>
-              <p class="text-slate-700 font-semibold text-sm text-purple-400">
+              <p style="color: #e41a01;" class="text-slate-700 font-semibold text-sm text-purple-400">
                 {{ `(${props.post.images.length} Pics)` }}
               </p>
             </div>

@@ -1677,7 +1677,8 @@ select option:focus {
 }
 .dark .box{
   border-color: rgb(255 255 255 / 0.1);
-  background-color: rgb(var(--dark-bg));
+  /* background-color: rgb(var(--dark-bg)); */
+  background-color: black;
   --tw-text-opacity: 1;
   color: rgb(241 245 249 / var(--tw-text-opacity));
   --tw-shadow-color: rgb(0 0 0 / 0.05);
@@ -2586,7 +2587,8 @@ select option:focus {
 }
 .dark .ti-modal .ti-modal-content{
   border-color: rgb(255 255 255 / 0.1);
-  background-color: rgb(var(--dark-bg));
+  /* background-color: rgb(var(--dark-bg)); */
+  background-color: black;
   --tw-shadow-color: rgb(0 0 0 / 0.05);
   --tw-shadow: var(--tw-shadow-colored);
 }

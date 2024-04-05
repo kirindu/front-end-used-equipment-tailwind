@@ -105,7 +105,7 @@ const selectImage = computed(() => {
               />
             </div>
             <div>
-              <p class="text-slate-700 font-semibold text-sm text-purple-400">
+              <p style="color:#e41a01;" class="text-slate-700 font-semibold text-sm text-purple-400">
                 {{ `(${props.post.images.length} Pics)` }}
               </p>
             </div>
@@ -116,7 +116,7 @@ const selectImage = computed(() => {
           <div class="space-y-4">
             <div>
               <h3 class="text-lg font-semibold text-gray-800 dark:text-white">
-                <span class="font-semibold mb-0 text-xl text-orange-500 leading-none">Price:</span>
+                <span style="color: #e41a01;" class="font-semibold mb-0 text-xl text-orange-500 leading-none">Price:</span>
          
 
                 {{ `${formattingCurrency(props.post.price)}` }}
@@ -136,6 +136,7 @@ const selectImage = computed(() => {
                   <div class="flex items-start">
                     <div class="ltr:mr-3 rtl:ml-3">
                       <span
+                      style="background-color: #e41a01;"
                         class="avatar rounded-full bg-primary text-white p-3"
                         ><i
                           class="ti ti-calendar-stats text-2xl leading-none"
@@ -146,7 +147,7 @@ const selectImage = computed(() => {
                       class="flex-1 sm:flex justify-between items-center mx-3"
                     >
                       <div class="flex-1">
-                        <p class="mb-1 text-orange-500 text-xl font-semibold">Year:</p>
+                        <p style="color: #e41a01;"  class="mb-1 text-orange-500 text-xl font-semibold">Year:</p>
                         <h6 class="text-lg text-gray-800 dark:text-white">
                           {{ props.post.year }}
                         </h6>
@@ -163,6 +164,7 @@ const selectImage = computed(() => {
                   <div class="flex items-start">
                     <div class="ltr:mr-3 rtl:ml-3">
                       <span
+                      style="background-color: #e41a01;"
                         class="avatar rounded-full bg-primary text-white p-3"
                         ><i
                           class="ti ti-brand-bandcamp text-2xl leading-none"
@@ -171,7 +173,7 @@ const selectImage = computed(() => {
                     </div>
                     <div class="flex-1 sm:flex justify-between items-center mx-3" >
                       <div class="flex-1">
-                        <p class="mb-1 text-orange-500 text-xl font-semibold">Manufacturer:</p>
+                        <p style="color: #e41a01;"  class="mb-1 text-orange-500 text-xl font-semibold">Manufacturer:</p>
                         <h6 class="text-lg text-gray-800 dark:text-white">
                           {{ props.post.manufacturer }}
                         </h6>
@@ -189,6 +191,7 @@ const selectImage = computed(() => {
                   <div class="flex items-start">
                     <div class="ltr:mr-3 rtl:ml-3">
                       <span
+                      style="background-color: #e41a01;"
                         class="avatar rounded-full bg-primary text-white p-3"
                         ><i class="ti ti-box-model text-2xl leading-none"></i
                       ></span>
@@ -196,7 +199,7 @@ const selectImage = computed(() => {
                     <div class="flex-1 sm:flex justify-between items-center mx-3">
 
                       <div class="flex-1">
-                        <p class="mb-1 text-orange-500 text-xl font-semibold">Body:</p>
+                        <p style="color: #e41a01;"  class="mb-1 text-orange-500 text-xl font-semibold">Body:</p>
                         <h6 class="text-lg text-gray-800 dark:text-white">
                          {{ props.post.body }}
                         </h6>
@@ -214,13 +217,14 @@ const selectImage = computed(() => {
                   <div class="flex items-start">
                     <div class="ltr:mr-3 rtl:ml-3">
                       <span
+                      style="background-color: #e41a01;"
                         class="avatar rounded-full bg-primary text-white p-3"
                         ><i class="ti ti-engine text-2xl leading-none"></i
                       ></span>
                     </div>
                     <div class="flex-1 sm:flex justify-between items-center mx-3" >
                       <div class="flex-1">
-                        <p class="mb-1 text-orange-500 text-xl font-semibold">Engine:</p>
+                        <p style="color: #e41a01;"  class="mb-1 text-orange-500 text-xl font-semibold">Engine:</p>
                         <h6 class="text-lg text-gray-800 dark:text-white">
                           {{ props.post.engine }}
                         </h6>
@@ -238,6 +242,7 @@ const selectImage = computed(() => {
                   <div class="flex items-start">
                     <div class="ltr:mr-3 rtl:ml-3">
                       <span
+                      style="background-color: #e41a01;"
                         class="avatar rounded-full bg-primary text-white p-3"
                         ><i
                           class="ti ti-manual-gearbox text-2xl leading-none"
@@ -246,7 +251,7 @@ const selectImage = computed(() => {
                     </div>
                     <div class="flex-1 sm:flex justify-between items-center mx-3">
                       <div class="flex-1">
-                        <p class="mb-1 text-orange-500 text-xl font-semibold">Power Train:</p>
+                        <p style="color: #e41a01;" class="mb-1 text-orange-500 text-xl font-semibold">Power Train:</p>
                         <h6 class="text-lg text-gray-800 dark:text-white">
                           {{ props.post.powerTrain }}
                         </h6>
@@ -264,6 +269,7 @@ const selectImage = computed(() => {
                   <div class="flex items-start">
                     <div class="ltr:mr-3 rtl:ml-3">
                       <span
+                      style="background-color: #e41a01;"
                         class="avatar rounded-full bg-primary text-white p-3"
                         ><i
                           class="ti ti-vector-bezier-2 text-2xl leading-none"
@@ -272,7 +278,7 @@ const selectImage = computed(() => {
                     </div>
                     <div class="flex-1 sm:flex justify-between items-center mx-3">
                       <div class="flex-1">
-                        <p class="mb-1 text-orange-500 text-xl font-semibold">Chassis:</p>
+                        <p style="color: #e41a01;"  class="mb-1 text-orange-500 text-xl font-semibold">Chassis:</p>
                         <h6 class="text-lg text-gray-800 dark:text-white">
                           {{ props.post.chassis }}
                         </h6>
@@ -290,7 +296,7 @@ const selectImage = computed(() => {
 
           
           <h4 class="text-lg  text-gray-800 dark:text-white">
-                <span class="font-semibold mb-0 text-xl text-orange-500 leading-none">Description:</span>
+                <span style="color: #e41a01;"  class="font-semibold mb-0 text-xl text-orange-500 leading-none">Description:</span>
                 {{ `${props.post.description}` }}
               </h4>
 
@@ -298,7 +304,7 @@ const selectImage = computed(() => {
               <hr>
 <br>
               <h4 class="text-lg  text-gray-800 dark:text-white">
-                <span class="font-semibold mb-0 text-xl text-blue-500 leading-none">Contact:</span>
+                <span style="color: #e41a01;"  class="font-semibold mb-0 text-xl text-blue-500 leading-none">Contact:</span>
                <p>Sam Nelson</p>
                <p>801-836-5658</p>
                <p>sam@caasutah.com</p>

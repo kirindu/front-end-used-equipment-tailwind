@@ -49,7 +49,7 @@ const selectClassIcon = computed(() => {
       <div class="box-body">
         <div class="flex items-start">
           <div class="ltr:mr-3 rtl:ml-3">
-            <span class="avatar rounded-full bg-primary text-white p-3"
+            <span style="background-color: #e41a01 !important;" class="avatar rounded-full bg-primary text-white p-3"
               ><i :class="selectClassIcon"></i
             ></span>
           </div>
