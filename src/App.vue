@@ -4,6 +4,7 @@ import { ref, computed, watch, onMounted } from "vue";
 
 // Importamos Stores
 import { useCategoriesStore } from "@/stores/categories.js";
+import { usePostsStore } from "@/stores/posts.js";
 
 // Importamos Componentes
 import AppPageHeader from "./components/layouts/AppPageHeader.vue";
@@ -13,15 +14,22 @@ import Spinner from "./components/Spinner.vue";
 
 // Leemos propiedades de los Stores
 const storeCategory = useCategoriesStore();
+const storePost = usePostsStore();
 
 //Reactividad
 const postRecividos = ref([]);
+const visiblePostInicial = ref(true);
 
 // Metodos
 
 const gestionarPostsRecibidos = (data) => {
   postRecividos.value = data;
-  // console.log(postRecividos.value);
+};
+
+const recibirClicksDeCategoerias = (data) => {
+  visiblePostInicial.value = data;
+
+  console.log(data);
 };
 </script>
 
@@ -37,20 +45,43 @@ const gestionarPostsRecibidos = (data) => {
         <div class="grid grid-cols-12 gap-x-5">
           <CategoriesItem
             v-if="!storeCategory.loading"
+            :isAll="true"
+            :category="[]"
+            @data-sent="gestionarPostsRecibidos"
+            @evento-click="recibirClicksDeCategoerias"
+          />
+          
+          <CategoriesItem
+            v-if="!storeCategory.loading"
             v-for="category in storeCategory.categories"
             :key="category._id"
             :category="category"
+            :isAll="false"
             @data-sent="gestionarPostsRecibidos"
+            @evento-click="recibirClicksDeCategoerias"
           />
         </div>
 
-        <div class="grid grid-cols-12 gap-x-5">
-          <PostsItem
-            v-for="post in postRecividos"
-            :key="post._id"
-            :post="post"
-          />
-        </div>
+        <template v-if="visiblePostInicial">
+          <div class="grid grid-cols-12 gap-x-5">
+            <PostsItem
+              v-if="!storePost.loading"
+              v-for="post in storePost.posts"
+              :key="post._id"
+              :post="post"
+            />
+          </div>
+        </template>
+
+        <template v-if="!visiblePostInicial">
+          <div class="grid grid-cols-12 gap-x-5">
+            <PostsItem
+              v-for="post in postRecividos"
+              :key="post._id"
+              :post="post"
+            />
+          </div>
+        </template>
       </div>
     </div>
   </div>
