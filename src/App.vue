@@ -4,6 +4,8 @@ import { ref, computed, watch, onMounted } from "vue";
 
 //Insights Vercel
 import { SpeedInsights } from "@vercel/speed-insights/vue"
+// Analytics Vercel
+import { inject } from '@vercel/analytics';
 
 // Importamos Stores
 import { useCategoriesStore } from "@/stores/categories.js";
@@ -32,7 +34,8 @@ const gestionarPostsRecibidos = (data) => {
 const recibirClicksDeCategoerias = (data) => {
   visiblePostInicial.value = data;
 
-  console.log(data);
+//  console.log(data);
+inject();
 };
 </script>
 
