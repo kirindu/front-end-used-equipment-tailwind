@@ -2,6 +2,9 @@
 //Importaciones de sistemas y librerias
 import { ref, computed, watch, onMounted } from "vue";
 
+//Insights Vercel
+import { SpeedInsights } from "@vercel/speed-insights/vue"
+
 // Importamos Stores
 import { useCategoriesStore } from "@/stores/categories.js";
 import { usePostsStore } from "@/stores/posts.js";
@@ -85,4 +88,5 @@ const recibirClicksDeCategoerias = (data) => {
       </div>
     </div>
   </div>
+  <SpeedInsights />
 </template>
